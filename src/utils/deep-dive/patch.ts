@@ -2,8 +2,8 @@
 /*
 * <div v-for="item in list" :key="item.id"></div>
 * */
-import { IVNodeType } from "./deepDiveTypes";
-import { mount } from "./mount";
+import { IVNodeType } from "@/utils/deep-dive/deepDiveTypes";
+import { mount } from "@/utils/deep-dive/mount";
 /**
  * @param oldNode 旧节点信息
  * @param newNode 新节点/快照，将要更新的内容
@@ -69,16 +69,22 @@ export function patch (oldNode: IVNodeType, newNode: IVNodeType) {
         }
 
         if (newChildren.length > oldChildren.length) {
+          console.log('add el')
           // 当新子节点数量多余旧子节点的长度，则新增多出来的数量
           newChildren.slice(oldChildren.length).forEach(child => {
             // console.log('new child', child)
             mount(child, el)
           })
-        } else {
+        } else if (newChildren.length < oldChildren.length) {
           //  否则删除
+          console.log('remove el')
           oldChildren.slice(newChildren.length).forEach(child => {
             el.removeChild(child.el)
           })
+        } else {
+          console.log('same')
+          console.log('oldChildren', oldChildren)
+          console.log('newChildren', newChildren)
         }
       }
     }

@@ -1,9 +1,14 @@
 // vue h 函数
-import { IVNodeChildrenType, IVNodePropsType, IVNodeTagType } from "@/utils/deep-dive/deepDiveTypes";
-import { h } from "./helper";
+import {
+  IVNodeChildrenType,
+  IVNodePropsType,
+  IVNodeTagType,
+  IVNodeType,
+} from '@/utils/deep-dive/deepDiveTypes'
+import { h } from "@/utils/deep-dive/render-helper";
 
 // 创建vue vNode
-export const TextNode = h('div', {
+export const TextNode: IVNodeType = h('div', {
   id: 'text-node',
   class: 'title'
 }, 'hello world')

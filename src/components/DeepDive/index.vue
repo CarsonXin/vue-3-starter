@@ -12,12 +12,12 @@ import { onMounted } from 'vue'
 import { mount } from "@/utils/deep-dive/mount";
 import { patch } from "@/utils/deep-dive/patch";
 import { oldNode, newNode, ListNode } from "@/utils/deep-dive";
-import '@/utils/deep-dive/reactivity/dependence'
+// import '@/utils/deep-dive/reactivity/dependence'
 export default {
   name: "index",
   setup() {
     onMounted(() => {
-      const el = document.getElementById('deep-dive-container')
+      const el: HTMLElement = document.getElementById('deep-dive-container')
       mount(oldNode, el)
 
       setTimeout(() => {

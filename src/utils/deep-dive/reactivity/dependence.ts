@@ -1,56 +1,12 @@
-import { effect } from "vue";
 // vue 响应式
-let activeEffect
 
-// 依赖
-class dependence {
+import { DependenceSimple as dependence, watchEffect } from '@/utils/deep-dive/dependence'
 
-  subscribers
-  _value
-
-  constructor(value) {
-    // 将订阅者存储到一个集合中
-    this.subscribers = new Set()
-    this._value = value
-  }
-
-  get value() {
-    this.depend()
-    return this._value
-  }
-
-  set value(newValue) {
-    this._value = newValue
-    // 当值改变是，通知订阅者
-    this.notify()
-  }
-
-  // track
-  depend() {
-    if (activeEffect) {
-      // 将副作用函数添加到订阅队列中
-      this.subscribers.add(activeEffect)
-    }
-  }
-
-  // trigger
-  notify() {
-    this.subscribers.forEach(effect => {
-      effect()
-    })
-  }
-}
-
+// @ts-ignore
 const myState = window.myState = new dependence(true)
 
+// @ts-ignore
 const msg = window.myMsg = new dependence('hello')
-
-function watchEffect(effectFunc: Function) {
-  activeEffect = effectFunc
-  // 在每次副作用执行前，都需要对它的依赖关系进行清除
-  effectFunc()
-  activeEffect = null
-}
 
 watchEffect(() => {
   // dep.depend()

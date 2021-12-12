@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { MySelector, RenderComponent } from "./Selector";
+import { MySelector, RenderComponent } from "@/components/Selector.tsx";
 import DeepDive from "./DeepDive/index.vue";
 defineProps({
   msg: String

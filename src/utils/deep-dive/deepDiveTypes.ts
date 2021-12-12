@@ -2,7 +2,8 @@ export type IVNodeTagType = string
 
 export type IVNodePropsType = Object & {
   key?: string | number
-}
+  [propsName: string]: any
+} | null
 
 export type IVNodeChildType = any
 
