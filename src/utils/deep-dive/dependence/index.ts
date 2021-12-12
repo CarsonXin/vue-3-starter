@@ -1,8 +1,10 @@
-// 依赖
+/*
+* 依赖关系的实现逻辑
+*  */
 
 let activeEffect: any
 
-// 依赖
+// 简易依赖
 export class DependenceSimple {
 
   subscribers
@@ -25,7 +27,6 @@ export class DependenceSimple {
     this.notify()
   }
 
-  // track
   depend() {
     if (activeEffect) {
       // 将副作用函数添加到订阅队列中
@@ -54,7 +55,6 @@ export class Dependence {
 
   subscribers = new Set()
 
-  // track
   depend() {
     if (activeEffect) {
       // 将副作用函数添加到订阅队列中
