@@ -110,7 +110,7 @@
       "scripthost",
       "es2016"
     ],
-    "jsx": "react",
+//    "jsx": "preserve",
   },
   "include": [
     "src/**/*.ts",

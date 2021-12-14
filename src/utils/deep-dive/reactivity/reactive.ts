@@ -1,4 +1,5 @@
 import { getTrack, doTrigger } from "@/utils/deep-dive/target-map";
+import { isEqual } from "@/utils/comparator";
 
 // // 2. 将依赖关系存储到一个全局weakMap中
 // // 使用weakMap的原因：
@@ -29,7 +30,7 @@ const reactiveHandlers: ProxyHandler<any> = {
   set(target: any, key: string | symbol, value: any, receiver: any): boolean {
     const oldValue = target[key]
     const result = Reflect.set(target, key, value, receiver)
-    if (oldValue !== value) {
+    if (result && !isEqual(oldValue, value)) {
       // todo 调整比较方法 21.12.12
       // 在返回值之前，且两个值不相等时，通知触发器
       // const dep = getTrack(target, key)

@@ -44,7 +44,8 @@ export function doTrigger(target: any, key: string | symbol) {
     return
   } else {
     let dep = depsMap.get(key)
-    dep.notify()
-    // return dep
+    // console.log('dep', dep)
+    dep && dep.notify()
+    return dep
   }
 }
