@@ -110,7 +110,7 @@
       "scripthost",
       "es2016"
     ],
-//    "jsx": "preserve",
+    "jsx": "preserve", // 禁用 React 的样式触发
   },
   "include": [
     "src/**/*.ts",

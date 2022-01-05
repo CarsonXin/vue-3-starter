@@ -53,6 +53,7 @@ export function watchEffect(effectFunc: Function) {
 // 当在响应式内部使用时，这个依赖类就不需要跟踪它自己的值，因为值实在对象上的
 export class Dependence {
 
+  // 储存依赖关系、副作用集合
   subscribers = new Set()
 
   depend() {
